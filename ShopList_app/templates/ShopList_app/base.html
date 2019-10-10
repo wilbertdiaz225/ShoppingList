@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name = "viewpoint" content = "width = device-width, initial scale = 1" >
+    <title>Shopping List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style>
+        body, html
+        {
+            height: 70%;
+            margin: 0;
+        }
+
+        .navbar-default .navbar-text
+        {
+            color: black;
+            padding-left: 1em;
+            padding-top: 0em;
+            font-size: 2.3em;
+            font-family: "Comic Sans MS", cursive, sans-serif;
+            margin: 0.5em 0;
+        }
+
+        .navbar-default
+        {
+            border-bottom: 5px solid black;
+            position: fixed !important;
+            top: 0em;
+            padding-top: 0em;
+            width: 200em;
+            height: 6em;
+        }
+
+        .wrapper
+        {
+            display: flex;
+            width: 100%;
+        }
+
+        .affix
+        {
+            top: 0;
+            width: 90%;
+            z-index: 9999 !important;
+        }
+
+        .bg-image
+        {
+            background-image: url(https://previews.123rf.com/images/elenabsl/elenabsl1703/elenabsl170300036/74236925-supermarket-aisle-with-shelves-grocery-items-and-full-shopping-cart-retail-and-consumerism-concept.jpg);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            filter: blur(3px);
+            -webkit-filter: blur(8px);
+            height: 180%
+        }
+
+        .borderlist
+        {
+            list-style-position:inside;
+            border: 1px solid black;
+        }
+
+        #nav
+        {
+            background-color: black;
+            color: white;
+            width: 100%;
+        }
+
+        #cartLogo
+        {
+            height: 4em;
+            width: 4me;
+        }
+
+        #sideList
+        {
+            width: 250px;
+            position: fixed;
+            top: 5.5em;
+            left: 0;
+            height: 100vh;
+            z-index: 999;
+            background: transparent;
+            color: black;
+            transition: all 0.3s;
+            border: 0.3em solid black
+        }
+    </style>
+</head>
+<body>
+
+  <nav class ="navbar navbar-default navbar-fixed-top">
+      <a class = "navbar-text pull-left" href = "{% url 'home' %}">
+          Shopping List
+      </a>
+      <ul class="nav navbar-nav">
+        <li>
+            <a href="{% url 'home' %}">
+                <img id = "cartLogo" alt = "WebsiteLogo" src = "https://library.kissclipart.com/20180904/zlq/kissclipart-shopping-trolley-icon-clipart-shopping-cart-clip-a-4cf09b0c5818850a.png" class="img-fluid">
+            </a>
+        </li>
+  </nav>
+
+  <div class = "wrapper" >
+      <nav id = "sideList">
+          <div class = "sideList-header" style="width: 17.3em">
+              <li >
+                  <div class = "YourListSide" style = "background: white; font-size: 2em; text-align: center; border-bottom: 0.15em solid black; font-family: Comic Sans MS, cursive, sans-serif;">Your Lists</div>
+              </li>
+              <li>
+                  <form class = "form-inline" method = "POST">
+                      {% csrf_token %}
+                      <input id = "inputList1" class = "form-control" style = "width: 13.35em" placeholder = "Enter New List Name">
+                      <button class = "btn btn-danger" type = "submit">Add</button>
+                  </form>
+              </li>
+          </div>
+      </nav>
+  </div>
+
+  <div class = "container" >
+      {% block content %}
+      {% endblock %}
+  </div>
+
+  <div class = "bg-image" ></div>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+{% extends "ShopList_app/base.html" %}
+
+{% block content %}
+
+    {% if all_items %}
+        {% for things in all_items %}
+            {{ things.item }}
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}
