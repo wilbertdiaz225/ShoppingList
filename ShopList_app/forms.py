@@ -1,7 +1,8 @@
 from django import forms
-from .models import NewList
+from .models import List
 
 class NewListForm(forms.ModelForm):
     class Meta:
-        model = NewList
-        fields = ["item"]
+        model = List
+        fields = ['list_name']
+

@@ -2,10 +2,8 @@
 
 {% block content %}
 
-    {% if all_items %}
-        {% for things in all_items %}
-            {{ things.item }}
-        {% endfor %}
-    {% endif %}
+    {% for List in object_list %}
+        <li>{{ List.list_name }}</li>
+    {% endfor %}
 
 {% endblock %}

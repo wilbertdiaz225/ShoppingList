@@ -117,19 +117,16 @@
                   <div class = "YourListSide" style = "background: white; font-size: 2em; text-align: center; border-bottom: 0.15em solid black; font-family: Comic Sans MS, cursive, sans-serif;">Your Lists</div>
               </li>
               <li>
-                  <form class = "form-inline" method = "POST">
+                  <form action = "/addNewList/" class = "form-inline" method = "POST">
                       {% csrf_token %}
-                      <input id = "inputList1" class = "form-control" style = "width: 13.35em" placeholder = "Enter New List Name">
+                      <input name = "new_list" type = "text" class = "form-control" style = "width: 13.35em" placeholder = "Enter New List Name">
                       <button class = "btn btn-danger" type = "submit">Add</button>
                   </form>
               </li>
+              {% block content %}
+              {% endblock %}
           </div>
       </nav>
-  </div>
-
-  <div class = "container" >
-      {% block content %}
-      {% endblock %}
   </div>
 
   <div class = "bg-image" ></div>
