@@ -117,7 +117,7 @@
                   <div class = "YourListSide" style = "background: white; font-size: 2em; text-align: center; border-bottom: 0.15em solid black; font-family: Comic Sans MS, cursive, sans-serif;">Your Lists</div>
               </li>
               <li>
-                  <form action = "/addNewList/" class = "form-inline" method = "POST">
+                  <form action = "/addNewList/" class = "form-inline" method = "POST" style = "border-bottom: 0.15em solid black">
                       {% csrf_token %}
                       <input name = "new_list" type = "text" class = "form-control" style = "width: 13.35em" placeholder = "Enter New List Name">
                       <button class = "btn btn-danger" type = "submit">Add</button>
