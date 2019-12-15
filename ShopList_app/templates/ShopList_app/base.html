@@ -59,7 +59,23 @@
             background-attachment: fixed;
             filter: blur(3px);
             -webkit-filter: blur(8px);
-            height: 180%
+            height: 180%;
+            z-index: -2;
+        }
+
+        .item-window
+        {
+            background-image: url("https://i.pinimg.com/originals/9c/14/f8/9c14f89ed6a5145882d05b9576c0f81a.jpg");
+            background-position: fixed;
+            background-size: 85% 45%;
+            background-attachment: fixed;
+            height: 65em;
+            width: 80em;
+            top: 5em;
+            left: 17.5em;
+            position:fixed;
+            border: 0.3em solid black;
+            display: initial;
         }
 
         .borderlist
@@ -129,7 +145,18 @@
       </nav>
   </div>
 
-  <div class = "bg-image" ></div>
+  <div id = "item-display" class = "item-window">
+      <div style = "background: white; font-size: 2.35em; text-align: center; border-bottom: 0.15em solid black; font-family: Comic Sans MS, cursive, sans-serif;">Items</div>
+      <form action = "/addNewItem/" class= "form-inline"  method = "POST" style = "border-bottom: 0.15em solid black">
+          {% csrf_token %}
+          <input name = "new_item" type = "text" class = "form-control" style = "width: 70em" placeholder = "Enter New Item">
+          <button class = "btn btn-primary" type = "submit" style = "width: 9.13em;">Add</button>
+      </form>
+      {% block itemDisplay %}
+      {% endblock %}
+  </div>
+
+  <div class = "bg-image"></div>
 
 </body>
 </html>
