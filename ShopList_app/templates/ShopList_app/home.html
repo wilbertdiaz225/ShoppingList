@@ -6,19 +6,22 @@
         <li>
             <form action = "/deleteList/{{lists_names.id}}/" method = "POST">
                 {% csrf_token %}
-                <div style = "font-size: 1.5em; text-align: left;  font-family: Arial, Helvetica, sans-serif; background: white; border-bottom: 0.15em solid black;" onclick = "itemToggle({{list_id}})">{{lists_names.list_name}}
+                <div style = "font-size: 1.5em; text-align: left;  font-family: Arial, Helvetica, sans-serif; background: white; border-bottom: 0.15em solid black;" onclick = "itemToggle()">{{lists_names.list_name}}
                     <button type="submit" class="close" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+            </form>
+            <form action = "/displayItem/{{lists_names.id}}/" method = "POST">
+                {% csrf_token %}
+                <button class = "btn btn-info" type = "submit" style = "width: 17.2em; border-bottom: 0.15em solid black">Select</button>
             </form>
         </li>
     {% endwith %}
     {% endfor %}
 
     <script type="text/javascript">
-    function itemToggle(listID) {
-        var list = listID;
+    function itemToggle() {
         var x = document.getElementById("item-display");
         if (x.style.display === "none") {
             x.style.display = "block";
@@ -26,31 +29,16 @@
         } else {
             x.style.display = "none";
         }
-
-        var catid;
-        catid = $(this).attr("data-catid");
-        $.ajax(
-        {
-            type:"GET",
-            url: "/ajax/displayItem/",
-            data:{
-                list_id: list
-            },
-            dataType: 'json',
-        })
     }
     </script>
 {% endblock %}
 
 {% block itemDisplay %}
-    {% if all_items %}
-    {% for item_names in all_items %}
+    {% for items_names in all_items %}
         <li>
-            {{item_names.item_name}}
-
+            <div style = "font-size: 1.5em; text-align: left;  font-family: Arial, Helvetica, sans-serif;">{{items_names.item_name}}</div>
         </li>
     {% endfor %}
-    {% endif %}
 {% endblock %}
 
 

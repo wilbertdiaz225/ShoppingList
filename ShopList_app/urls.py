@@ -8,5 +8,5 @@ urlpatterns = [
     path('addNewList/', views.addNewList, name="addNewList"),
     path('deleteList/<int:list_id>/', views.deleteList, name="deleteList"),
     path('addNewItem/', views.addNewItem, name="addNewItem"),
-    url(r'^ajax/displayItem/$', views.displayItem, name='displayItem'),  # index view at /
+    path('displayItem/<int:list_id>/', views.displayItem, name='displayItem'),  # index view at /
 ]
